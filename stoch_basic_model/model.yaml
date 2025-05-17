@@ -23,4 +23,4 @@ steady_state:
     cbar: abar * kbar**alpha - delta*kbar
   init_guesses:
     c: 0
-    k: 0
+    k: 1
