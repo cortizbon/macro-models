@@ -1,0 +1,29 @@
+variables: [c, y, k, n, a]
+shocks: [e_a]
+
+parameters: [beta, alpha, gamma, rho, delta, sigma, abar, nkbar, ykbar, ckbar]
+
+definitions: |
+  from jax.numpy import log, maximum
+
+equations:
+  ~ n = (- sigma * c + a + alpha * kLag ) / (gamma + alpha)
+  ~ y=a+(1-alpha)*kLag+alpha*n
+  ~ k=(1-delta)*kLag+ykbar*y-ckbar*c
+  ~ cPrime= (beta / sigma * (alpha * abar + nkbar ** (1 - alpha))) * (aPrime - (1 - alpha) * kPrime + (1 - alpha) * nPrime)
+  ~ a=rho*aLag+e_a
+
+steady_state:
+  fixed_values:
+    gamma: 2
+    beta: 0.99
+    delta: 0.025
+    alpha: 0.67
+    abar: 1
+    rho: 0.9
+    sigma: 0.01
+    nkbar: (((1/beta)-1+delta)/((1-alpha)*abar))**(1/(alpha))
+    ykbar:   (((1/beta)-1+delta)/(1-alpha))
+    ckbar:   (((1/beta)-1+delta)/(1-alpha))-delta
+  init_guesses:
+    k: 0.95
