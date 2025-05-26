@@ -29,6 +29,6 @@ steady_state:
     rbar: (1 / beta) - (1 - delta)
     kbar: psi * lbar
     ybar: abar * kbar ** alpha * lbar ** (1 - alpha) 
-    cbar: (abar * psi ** alpha - delta * psi) * lbar
+    cbar: ybar - delta * kbar
   init_guesses:
     k: 0.95
