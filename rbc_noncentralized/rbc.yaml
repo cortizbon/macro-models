@@ -18,17 +18,18 @@ equations:
 steady_state:
   fixed_values:
     phi: 1
-    sigma: 2
+    sigma: 1
     alpha: 0.33
     beta: 0.98
     rho: 0.9
     delta: 0.025
     abar: 1
-    psi: ((1 / abar * alpha) * ((1 / beta) - (1 - delta))) ** (1 / (alpha - 1))
+    psi: ((1 - beta * (1 - delta)) / (beta * alpha * abar)) ** (1 / (alpha - 1))
     lbar: ((((1 - alpha) * abar * psi ** alpha) / (abar * psi ** alpha - delta * psi) ** sigma)) ** (1 / (psi + sigma))
     rbar: (1 / beta) - (1 - delta)
     kbar: psi * lbar
     ybar: abar * kbar ** alpha * lbar ** (1 - alpha) 
     cbar: ybar - delta * kbar
   init_guesses:
-    k: 0.95
+    k: 1
+    c: 0
