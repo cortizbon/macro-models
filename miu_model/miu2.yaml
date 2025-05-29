@@ -1,0 +1,30 @@
+variables: [y, c, m, pi, i]
+shocks: [ey, ei]
+
+parameters: [sigma, phi, rho, psi, ibar, rho2, nu, beta]
+
+definitions: |
+  from jax.numpy import log, maximum
+
+equations:
+  ~ y = c
+  ~ m = nu / sigma * y - nu * ibar / beta * i
+  ~ i = sigma * (yPrime - y) + piPrime - rho2
+  ~ i = psi * pi + ei
+  ~ y = rho * yLag + ey 
+steady_state:
+  fixed_values:
+    beta: 0.98
+    nu: 1
+    sigma: 1
+    phi: 1
+    psi: 1.5
+    rho: 0.8
+    ibar: log(1 / beta)
+    rho2: -log(beta)
+  init_guesses:
+    y: 0.1
+    c: 0.1 
+    m: 0.1
+    pi: 0.1
+    i: 0.1
