@@ -1,0 +1,167 @@
+---
+title: "OLG"
+author: "Carlos Ortiz"
+format: pdf
+---
+
+## OLG básico
+
+### Demografía
+
+$$N_t=(1+n)N_{t-1}$$
+
+Debe tenerse presente que $l_t^1\neq 0$ y $l_t^2=0$.
+### Hogares
+
+$$U_t=u(c_t^1)+\beta u(c_{t+1}^2)$$
+
+$$u'(\cdot)>0, \hspace{0.3cm}u''(\cdot)<0,\hspace{0.3cm}\lim_{c\to 0}u'(c)=\infty$$
+
+$$w_t=c_t^1+s_t$$
+$$c_{t+1}^2=(1+r_{t+1})s_t$$
+
+$$c_t^1+\frac{c_{t+1}^2}{1+r_{t+1}}=w_t$$
+
+$$\mathcal{L}=u(c_t^1)+\beta u(c_{t+1}^2) +\lambda\left[w_t-c_t^1-\frac{c_{t+1}^2}{1+r_{t+1}}\right]$$
+
+**Ecuación de Euler**:
+
+$$u'(c_t^1)=\beta(1+r_{t+1})u'(c_{t+1}^2)$$
+
+### Empresas
+
+$$Y_t=F(K_t,L_t)$$
+
+$$\frac{Y_t}{L_t}=F\left(\frac{K_t}{L_t},1\right)\equiv f(k_t)$$
+
+$$\Pi_t=Y_t-w_tL_t-r_tK_t$$
+
+$$w_t=\frac{\partial F(K_t,L_t)}{\partial L_t}=f(k_t)-k_tf'(k_t)$$
+$$r_t=\frac{\partial F(K_t,L_t)}{\partial K_t}=f'(k_t)$$
+
+
+### Equilibrio
+
+$$N_tl_t^1=N_t=L_t$$
+$$K_{t+1}-K_t=I_t$$
+$$I_t=N_ts_t-K_t$$
+$$K_{t+1}=N_ts_t$$
+
+Dividiendo entre $N$
+
+$$(1+n)k_{t+1}=s_t=s(w_t,r_{t+1})$$
+
+### Estado estacionario
+
+$$k_t=k_{t+1}=k$$
+$$(1+n)k=s(w(k),r(k))$$
+
+Esta solución puede ser resuelta para $k$.
+
+### Ejemplo numérico
+
+$$U_t=\ln (c_t^1)+\beta\ln(c_{t+1}^2)$$
+
+$$\text{s. a }c_t^1+\frac{c_{t+1}^2}{1+r_{t+1}}=w_t$$
+
+Para las empresas
+
+$$Y_t=K_t^\alphaL_t^{1-\alpha}$$
+$$\frac{Y_t}{L_t}=\frac{Y_t}{N_t}=y_t=f(k_t)=\left(\frac{K_t}{N_t}\right)^{\alpha}=k_t^\alpha$$
+$$w_t=(1-alpha)k_t^\alpha$$
+$$r_t=\alpha k_t^{\alpha-1}$$
+
+$$s_t=\frac{\beta}{1+\beta}w_t$$
+
+$$k_{t+1}=\frac{s_t}{1+n}=\frac{\beta}{1+\beta}\frac{1-\alpha}{1+n}k_t^\alpha$$
+
+**Estado estacionario**:
+
+$$k=\left(\frac{\beta}{1+\beta}\frac{1-\alpha}{1+n}\right)^{\frac{1}{1-\alpha}}$$
+
+## OLG Pensiones
+
+### Pensiones - Fully funded
+
+$$U_t=u(c_t^1)+\beta u(c_{t+1}^2)$$
+
+$$w_t=c_t^1+s_t+d_t$$
+$$c_{t+1}^2=(1+r_{t+1})(d_t+s_t)$$
+
+$$u'(c_t^1)=\beta(1+r_{t+1})u'(c_{t+1}^2)$$
+
+$$s_t+d_t=(1+n)k_{t+1}$$
+
+**Trabajo elástico**
+
+$$U(c_t^1,c_{t+1}^2,l_t)=u^y(c_t^1,l_t)+u^o(c_{t+1}^2)$$
+
+$$(1-\tau)w_tl_t=c_t^1+s_t$$
+$$c_{t+1}^2=(1+r_{t+1})(d_t+s_t)$$
+$$d_t=\tau w_t l_t$$
+$$w_tl_t=c_t^1+\frac{c_{t+1}^2}{1+r_{t+1}}$$
+
+$$\frac{\partial u^y(c_t^1,l_t)}{\partial c_t^1}=\beta (1+r_{t+1})\frac{\partial u^0(c_{t+1}^2)}{\partial c_{t+1}^2}$$
+
+$$-\frac{\partial u^y(c_t^1,l_t)}{\partial l_t}=w_t$$
+
+$$w_t=\frac{\partial F(K_t,L_t)}{\partial L_t}=f(k_t)-k_tf'(k_t)$$
+
+$$r_t=\frac{\partial F(K_t, L_t)}{\partial K_t}=f'(k_t)$$
+
+$$(1+n)k_{t+1}=s_t+d_t=(1-\tau)w_tl_t-c_t^1+\tau w_t l_t=w_tl_t-c_t^1$$
+
+$$L_t\equiv N_t l_t$$
+
+### Pensiones - PAYG
+
+$$N_td_t=N_{t-1}pen_t$$
+$$N_t=(1+n)N_{t-1}$$
+$$pen_t=(1+n)d_t$$
+
+Para contribuciones constantes $d_t=d$
+
+$$pen_t=(1+n)d$$
+
+La restricción es
+
+$$w_t=c_t^1+s_t+d_t$$
+
+$$c_{t+1}^2=(1+r_{t+1})s_t+pen_{t+1}$$
+
+$$c_t^1+\frac{c_t^2}{1+r_{t+1}}=w_t-d_t+\frac{pen_{t+1}}{1+r_{t+1}}$$
+
+$$c_t^1+\frac{c_t^2}{1+r_{t+1}}=w_t + \frac{n-r_{t+1}}{1+r_{t+1}}d$$
+
+
+
+$$\mathcal{L}=u(c_t^1)+\beta u(c_{t+1}^2) +\lambda\left[w_t-dt + \frac{pen_{t+1}}{1+r_{t+1}}-c_t^1-\frac{c_{t+1}^2}{1+r_{t+1}}\right]$$
+
+$$(1+n)k_{t+1}=s[w_t(k_t), r_{t+1}(k_{t+1}), d_t]$$
+
+#### Ejemplo: trabajo inelástico
+
+$$U_t=\ln c_t^1+\beta \ln c_{t+1}^2-\nu_0\frac{l_t^{1+\frac{1}{\nu_1}}}{1+\frac{1}{\nu_1}}$$
+
+$$c_t^1+\frac{c_t^2}{1+r_{t+1}}=w_t + \frac{n-r_{t+1}}{1+r_{t+1}}d$$
+
+**FOC**:
+
+$$\frac{1}{c_t^1}=\lambda_t$$
+
+$$\frac{\beta}{c_{t+1}^2}=\frac{\lambda_t}{1+r_{t+1}}$$
+
+$$c_{t+1}^2=\beta c_t^1(1+r_{t+1})$$
+
+Sustituyendo en la restricción intertemporal
+
+$$c_t^1=\frac{1}{1+\beta}\left[w_t\bar{l}+\frac{n-r_{t+1}}{1+r_{t+1}}d\right]$$
+
+$$s_t=w_t\bar{l}-c_t^1-d_t=\frac{\beta}{1+\beta}w_t\bar{l}-\frac{1+\beta+\beta r_{t+1}+n}{(1+\beta)(1+r_{t+1})}d$$
+
+$$(1+n)k_{t+1}=w_t\bar{l}-c_t^1-d_t=\frac{\beta}{1+\beta}w_t\bar{l}-\frac{1+\beta+\beta r_{t+1}+n}{(1+\beta)(1+r_{t+1})}d$$
+
+$$Y_t=K_t^\alpha(N_t l_t)^{1-\alpha}$$
+
+$$w_t=(1-\alpha)K_t^\alpha(N_tl_t)^{-\alpha}=(1-\alpha)k_t^\alpha l_t^{-\alpha}$$
+$$r_t=\alpha K_t^{\alpha-1}(N_tl_t)^{1-\alpha}=\alpha k_t^{\alpha-1}l_t^{1-\alpha}$$

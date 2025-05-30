@@ -1,29 +1,31 @@
-variables: [c, y, k, n, a]
+variables: [c, y, k, l, a]
 shocks: [e_a]
 
-parameters: [beta, alpha, gamma, rho, delta, sigma, abar, nkbar, ykbar, ckbar]
+parameters: [sigma, alpha, phi, ybar, kbar, cbar, delta, beta, abar, lbar, rho, psi]
 
 definitions: |
   from jax.numpy import log, maximum
 
 equations:
-  ~ n = (- sigma * c + a + alpha * kLag ) / (gamma + alpha)
-  ~ y=a+(1-alpha)*kLag+alpha*n
-  ~ k=(1-delta)*kLag+ykbar*y-ckbar*c
-  ~ cPrime= (beta / sigma * (alpha * abar + nkbar ** (1 - alpha))) * (aPrime - (1 - alpha) * kPrime + (1 - alpha) * nPrime)
-  ~ a=rho*aLag+e_a
+  ~ l = (- sigma * c + a + alpha * k ) / (phi + alpha)
+  ~ y = a + (1 - alpha) * k + alpha * l
+  ~ k = (ybar / kbar) * y - (cbar / kbar) * c - delta * kLag
+  ~ cPrime = (beta / sigma) * (alpha * abar * kbar ** (alpha - 1) * lbar ** (1 - alpha)) * (aPrime - (1 - alpha) * kPrime + (1 - alpha) * lPrime) + c
+  ~ a = rho * aLag + e_a
 
 steady_state:
   fixed_values:
-    gamma: 2
-    beta: 0.99
+    sigma: 1
+    alpha: 0.33
+    phi: 1
     delta: 0.025
-    alpha: 0.67
+    beta: 0.99
     abar: 1
     rho: 0.9
-    sigma: 0.01
-    nkbar: (((1/beta)-1+delta)/((1-alpha)*abar))**(1/(alpha))
-    ykbar:   (((1/beta)-1+delta)/(1-alpha))
-    ckbar:   (((1/beta)-1+delta)/(1-alpha))-delta
+    psi: ((1 - beta * (1 - delta)) / (beta * alpha * abar)) ** (1 / (alpha - 1))
+    lbar: (((1 - alpha) * abar * psi ** alpha) / ((abar * psi ** alpha - delta * psi) ** sigma)) ** (1 / phi + sigma)
+    kbar: psi * lbar
+    ybar: abar * kbar ** alpha * lbar ** (1 - alpha)
+    cbar: ybar - delta * kbar
   init_guesses:
     k: 0.95
