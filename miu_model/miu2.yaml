@@ -21,7 +21,6 @@ steady_state:
     psi: 1.5
     rho: 0.8
     eta: 0.3
-    ibar: log(1 / beta)
     rho2: -log(beta)
   init_guesses:
     y: 0.1
