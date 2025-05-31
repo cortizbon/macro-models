@@ -11,7 +11,8 @@ format: pdf
 $$N_t=(1+n)N_{t-1}$$
 
 Debe tenerse presente que $l_t^1\neq 0$ y $l_t^2=0$.
-### Hogares
+
+### Hogares
 
 $$U_t=u(c_t^1)+\beta u(c_{t+1}^2)$$
 
@@ -66,7 +67,7 @@ $$\text{s. a }c_t^1+\frac{c_{t+1}^2}{1+r_{t+1}}=w_t$$
 
 Para las empresas
 
-$$Y_t=K_t^\alphaL_t^{1-\alpha}$$
+$$Y_t=K_t^\alpha L_t^{1-\alpha}$$
 $$\frac{Y_t}{L_t}=\frac{Y_t}{N_t}=y_t=f(k_t)=\left(\frac{K_t}{N_t}\right)^{\alpha}=k_t^\alpha$$
 $$w_t=(1-alpha)k_t^\alpha$$
 $$r_t=\alpha k_t^{\alpha-1}$$
@@ -79,7 +80,7 @@ $$k_{t+1}=\frac{s_t}{1+n}=\frac{\beta}{1+\beta}\frac{1-\alpha}{1+n}k_t^\alpha$$
 
 $$k=\left(\frac{\beta}{1+\beta}\frac{1-\alpha}{1+n}\right)^{\frac{1}{1-\alpha}}$$
 
-## OLG Pensiones
+## OLG Pensiones
 
 ### Pensiones - Fully funded
 
