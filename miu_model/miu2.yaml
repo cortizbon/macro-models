@@ -8,7 +8,7 @@ definitions: |
 
 equations:
   ~ y = c
-  ~ m = nu / sigma * y - eta * i
+  ~ m = sigma / nu * y - eta * i
   ~ yPrime = (1 / sigma) * (rho2 + i - piPrime) + y
   ~ i = psi * pi + ei
   ~ y = rho * yLag + ey 
