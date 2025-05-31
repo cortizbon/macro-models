@@ -1,0 +1,113 @@
+---
+title: "Modelos de búsqueda"
+author: "Carlos Ortiz"
+format: pdf
+---
+
+## Flinn-Heckman (1982) - I
+
+### Value functions
+
+$$V=-\frac{c\Delta t}{1+r\Delta t}+\frac{1-\lambda\Delta t}{1+r\Delta t}V+\frac{\lambda \Delta t}{1+r\Delta t}\mathbb{E}max[x/r;V]+o(\Delta t)$$
+$$\frac{1+r\Delta }{\Delta t}\left[V=-\frac{c\Delta t}{1+r\Delta t}+\frac{1-\lambda\Delta t}{1+r\Delta t}V+\frac{\lambda \Delta t}{1+r\Delta t}\mathbb{E}max[x/r;V]+o(\Delta t)\right]$$
+$$rV = -c -\lambda V +\lambda \mathbb{E}max[x/r;V]$$
+$$(\lambda+r)V=-c+\lambda \mathbb{E}max[x/r;V]$$
+$$(\lambda +r)V=-c+\lambda\left[\int_0^{rV}VdF(x)+\int_{rV}^\infty \frac{x}{r}dF(x)\right]$$
+$$(\lambda +r)V=-c+\lambda\left[\int_0^{rV}VdF(x)+\int_{rV}^{\infty}VdF(x)-\int_{rV}^{\infty}VdF(x)+\int_{rV}^\infty \frac{x}{r}dF(x)\right]$$
+$$(\lambda +r)V=-c+\lambda\left[V+\int_{rV}^\infty \left[\frac{x}{r}-V\right]dF
+(x)\right]$$
+$$rV=-c+\frac{\lambda}{r}\int_{rV}^\infty \left[x-rV\right]dF(x)$$
+
+Para cualquier salario $x>rV$ el agente acepta la oferta. La probabilida de que una oferta sea inaceptable es:
+
+$$F(rV)\equiv P(oferta < rV)$$
+
+Probabilida de que un periodo de desempleo $T_u$ dure más que $t_u$. Se necesitan dos ingredientes:
+
+1. Probabilidad de que se reciban $j$ ofertas en el intervalo de tiempo $t_u$
+
+$$P(j \text{ ofertas}|t_u)=\frac{(\lambda t_u)^je^{-\lambda t_u}}{j!}$$
+
+2. Probabilidad de que ninguna de las ofertas $j$ sea aceptable
+
+$$P(T_U>t_u)=\sum_{j=0}^{\infty}\frac{(\lambda t_u)^je^{-\lambda t_u}}{j!}[F(rv)]^j,\hspace{0.8cm}e^x=\sum_{j=0}^{\infty}\frac{x^j}{j!}$$
+$$P(T_U>t_u)=e^{-\lambda t_u}\sum_{j=0}^{\infty}\frac{(\lambda t_u[F(rv)])^j}{j!}$$
+$$P(T_U>t_u)=e^{-\lambda t_u}e^{\lambda t_u F(rV)}=e^{-\lambda t_u[1-F(rV)]}$$
+
+*Regla general de la función de densidad de una variable aleatoria truncada*:
+
+$$f(x|x\geq rV)=\frac{f(x)}{P(x\geq rV)}=\frac{f(x)}{1-F(rv)}$$
+
+**Densidad de $t_u$**
+
+Tasa de llegada de ofertas aceptables
+
+$$\lambda_{eff}=\lambda(1-F(rV))$$
+
+Con una función exponencial
+
+$$f(t_u)=\lambda_{eff}e^{-\lambda_{eff}t_u}$$
+$$f(t_u)=\lambda(1-F(rV))e^{-\lambda(1-F(rV))t_u}$$
+
+### Paréntesis teórico
+
+**Modelo de duración**: estudia el tiempo que pasa hasta que un evento ocurre. ¿Cuánto tiempo dura un trabajador desempleado antes de encontrar un trabajo?
+
+- Función de superviviencia: probabilidad de que el evento no haya ocurrido en el tiempo $t$.
+
+$$S(t)=P(T>t)$$
+
+- Función de densidad: probabilidad que el evento ocurra en el momento $t$ exactamente $f(t)$
+
+$$h(t)=\frac{f(t)}{S(t)}$$
+
+Esta es la hazard rate: mide el riesgo instantáneo de que suceda un evento en un momento específico del tiempo dado que aún no ha pasado.
+
+En el modelo de Flinn-Heckman:
+
+1. El evento es encontrar un trabajo aceptable.
+
+2. $T_u$ reprsenta la duración del desempleo.
+
+3. La tasa $h(t_u)$ es la probabilidad de encontrar un trabajo en un periodo de tiempo muy corto $\Delta t$ después de $t_u$
+
+$$h(t_u)=\frac{-d \ln P (T_u>t_u)}{d t_u}=\lambda (1-F(rV))$$
+
+### Estimación
+
+$$m(t_u,x|t_u\leq \bar{t}_u)=\left[\frac{\text{Densidad de }t_u}{\text{P de que el desempleo dure menos que }\bar{t}_u}\right]\left[\frac{\text{densidad de } x}{\text{P de que la oferta sea aceptable}}\right]$$
+$$m(t_u,x|t_u\leq \bar{t}_u)=\left[\frac{f(t_u)}{1-P(T_u>\bar{t}_u)}\right]\left[\frac{f(x)}{1-F(rV)}\right]$$
+$$m(t_u,x|t_u\leq \bar{t}_u)=\left[\frac{\lambda(1-F(rV))e^{-\lambda(1-F(rV))t_u}}{1-e^{-\lambda(1-F(rV))\bar{t}_u}}\right]\left[\frac{f(x)}{1-F(rV)}\right]$$
+
+
+\newpage
+
+## Flinn-Heckman (1982) II
+
+$$V_e(x)=\frac{1}{1+r\Delta t}\left\{x\Delta t+(1-\sigma\Delta t)V_e(x)+\sigma\Delta V_u\right\}$$
+$$\frac{(1+r\Delta t)V_e(x)}{\Delta t}=\frac{x \Delta t}{\Delta t}+\frac{(1-\sigma \Delta t)V_e(x)}{\Delta t}+\frac{\sigma \Delta tV_u}{\Delta t}$$
+$$\left(\frac{1}{\Delta t}+r\right)V_e(x)=x+\left(\frac{1}{\Delta t}-\sigma\right)V_e(x)+\sigma V_u$$
+$$r V_e(x)=x-\sigma V_e(x)+\sigma V_u$$
+$$\boxed{V_e(x)=\frac{x+\sigma V_u}{r+\delta}}$$
+
+**Salario de reserva**
+
+$$V_e(x^*)=V_u=\frac{x^*+\sigma V_u}{r+\sigma}$$
+$$x^*=rV_u$$
+
+**$V_u$**
+
+$$V_u=-\frac{c\Delta t}{1+r\Delta t}+\frac{1-\lambda\Delta t}{1+r\Delta t}V_u+\frac{\lambda \Delta t}{1+r\Delta t}\mathbb{E}max[V_e(x);V_u]+o(\Delta t)$$
+$$\frac{1+r\Delta }{\Delta t}\left[V_u=-\frac{c\Delta t}{1+r\Delta t}+\frac{1-\lambda\Delta t}{1+r\Delta t}V_u+\frac{\lambda \Delta t}{1+r\Delta t}\mathbb{E}max[V_e(x);V_u]+o(\Delta t)\right]$$
+$$rV_u = -c -\lambda V_u +\lambda \mathbb{E}max[V_e(x);V_u]$$
+$$(\lambda+r)V_u=-c+\lambda \mathbb{E}max[V_e(x);V_u]$$
+$$(\lambda +r)V_u=-c+\lambda\left[\int_0^{rV_u}V_udF(x)+\int_{rV_u}^\infty V_e(x)dF(x)\right]$$
+$$(\lambda +r)V_u=-c+\lambda\left[\int_0^{rV_u}V_udF(x)+\int_{rV_u}^\infty V_e(x)dF(x)\right]$$
+$$(\lambda +r)V_u=-c+\lambda\left[\int_0^{rV_u}V_udF(x)+\int_{rV_u}^{\infty}V_udF(x)-\int_{rV_u}^{\infty}V_udF(x)+\int_{rV_u}^\infty V_e(x)dF(x)\right]$$
+$$(\lambda +r)V_u=-c+\lambda \left[V_u+\int_{rV_u}^\infty (V_e(x)-V_u)dF(x)\right]$$
+$$rV_u=-c+\lambda \int_{rV_u}^\infty (V_e(x)-V_u)dF(x)$$
+$$rV_u=-c+\lambda \int_{rV_u}^\infty \left(\frac{x+\sigma V_u}{r+\sigma}-V_u\right)dF(x)$$
+$$rV_u=-c+\lambda \int_{rV_u}^\infty \left(\frac{x+\sigma V_u-\sigma V_u-rV_u}{r+\sigma}\right)dF(x)$$
+$$\boxed{rV_u=-c+\frac{\lambda}{r+\sigma} \int_{rV_u}^\infty (x-rV_u)dF(x)}$$
+
+
